@@ -8,7 +8,8 @@ app.use(express.json());
 app.use(cors());
 
 // Available Routes
-
+app.use('/api/auth', require('./Routes/auth'));
+app.use('/api/notes', require('./Routes/note'));
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${ port }`);
