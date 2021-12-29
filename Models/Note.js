@@ -7,8 +7,7 @@ const NotesSchema = mongoose.Schema({
     },
     title: {
         type: String,
-        required: true,
-        default: "untitled"
+        required: true
     },
     desc: {
         type: String,
@@ -16,8 +15,7 @@ const NotesSchema = mongoose.Schema({
     },
     tag: {
         type: String,
-        required: true,
-        default: 'general'
+        required: true
     },
     date: {
         type: Date,

@@ -23,12 +23,28 @@ router.post('/addnote', fetchuser, [
     try {
         const { title, desc, tag } = req.body;
 
+        let newTitle;
+        let newTag;
+        if (title == '') {
+            newTitle = 'untitled';
+        }
+        else {
+            newTitle = title;
+        }
+
+        if (tag == '') {
+            newTag = 'general';
+        }
+        else {
+            newTag = tag;
+        }
+
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
         const note = new Note({
-            title, desc, tag, user: req.user.id
+            title: newTitle, desc: desc, tag: newTag, user: req.user.id
         });
 
         const savedNote = await note.save();
